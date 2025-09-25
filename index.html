@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Centered Modal-Style Container -->
+  <div class="app-container">
+    <h2>Todo List</h2>
+    <button id="openModalBtn" class="cta-button">+ Add Task</button>
+    
+    <div id="taskBox">
+      <p id="emptyMessage">No tasks yet. Click + Add Task to create one.</p>
+      <ul id="taskList" class="task-list"></ul>
+    </div>
+  </div>
+
+  <!-- Existing Add/Edit Task Modal -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <h3 id="modalTitle">Add Task</h3>
+      <label>Task Name</label>
+      <input type="text" id="taskName">
+
+      <label>Due Date</label>
+      <input type="date" id="taskDate">
+
+      <label>Due Time</label>
+      <input type="time" id="taskTime">
+
+      <label>Priority</label>
+      <select id="taskPriority">
+        <option value="Low">Low</option>
+        <option value="Normal" selected>Normal</option>
+        <option value="High">High</option>
+      </select>
+
+      <label>Description (optional)</label>
+      <textarea id="taskDesc" rows="3" placeholder="Add extra details..."></textarea>
+
+      <div class="modal-actions">
+        <button id="saveTaskBtn" class="cta-button">Save</button>
+        <button id="cancelBtn" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing View Task Modal -->
+  <div id="viewTaskModal" class="modal">
+    <div class="modal-content view-modal">
+      <h3 id="viewTaskTitle"></h3>
+      <div class="view-section">
+        <strong>Due:</strong> <span id="viewTaskDate"></span>
+      </div>
+      <div class="view-section">
+        <strong>Priority:</strong> <span id="viewTaskPriority"></span>
+      </div>
+      <div class="view-section">
+        <strong>Description:</strong>
+        <p id="viewTaskDesc"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="closeViewBtn" class="secondary-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
