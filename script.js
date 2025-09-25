@@ -63,9 +63,14 @@ function createTaskElement({ name, date, time, priority, desc }) {
   const li = document.createElement('li');
   li.className = 'task-card';
 
-  // build header
+  // header container
   const header = document.createElement('div');
   header.className = 'task-header';
+
+  // ✅ completed checkbox
+  const check = document.createElement('input');
+  check.type = 'checkbox';
+  check.className = 'task-check';
 
   const titleEl = document.createElement('span');
   titleEl.className = 'task-title';
@@ -75,17 +80,18 @@ function createTaskElement({ name, date, time, priority, desc }) {
   prEl.className = `task-meta task-priority ${priority}`;
   prEl.textContent = priority;
 
+  header.appendChild(check);
   header.appendChild(titleEl);
   header.appendChild(prEl);
   li.appendChild(header);
 
-  // date
+  // due date
   const dateEl = document.createElement('div');
   dateEl.className = 'task-meta task-date';
-  dateEl.textContent = date ? `📅 ${date} ${time || ''}` : '';
+  dateEl.textContent = date ? `📅 ${date} ${time}` : '';
   li.appendChild(dateEl);
 
-  // optional description (truncated in CSS)
+  // description
   if (desc) {
     const descEl = document.createElement('div');
     descEl.className = 'task-desc';
@@ -105,23 +111,34 @@ function createTaskElement({ name, date, time, priority, desc }) {
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-btn';
   deleteBtn.textContent = 'Delete';
-  deleteBtn.addEventListener("click", () => {
-  li.remove();
-  toggleEmptyMessage();
-});
+  deleteBtn.addEventListener('click', () => {
+    li.remove();
+    toggleEmptyMessage();
+  });
 
   actions.appendChild(editBtn);
   actions.appendChild(deleteBtn);
   li.appendChild(actions);
 
+  // ✅ Completion toggle
+  check.addEventListener('change', () => {
+    if (check.checked) {
+      li.classList.add('completed');
+    } else {
+      li.classList.remove('completed');
+    }
+  });
+
+  // make whole card clickable (except actions & checkbox)
   li.addEventListener('click', (e) => {
-    if (!e.target.closest('.task-actions')) {
+    if (!e.target.closest('.task-actions') && !e.target.classList.contains('task-check')) {
       openViewModal(li);
     }
   });
 
   return li;
 }
+
 
 /* Open modal to edit a given task <li> */
 function openEditModal(li) {

@@ -188,7 +188,7 @@ h2 {
 }
 
 .task-actions {
-  margin-top: 10px;
+  margin-top: 4px;
   text-align: right;
 }
 .task-actions button {
@@ -399,4 +399,18 @@ h2 {
   line-height: 1.5;
   text-align: left;
   margin-bottom: 12px;
+}
+
+/* Completed tasks */
+.task-card.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+  background: linear-gradient(145deg, #283d55, #2f4a6d);
+}
+
+/* Checkbox style */
+.task-check {
+  margin-right: 10px;
+  cursor: pointer;
+  transform: scale(1.2);
 }
