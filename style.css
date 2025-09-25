@@ -216,7 +216,7 @@ h2 {
 
 /* Action Buttons */
 .task-actions button {
-  background: #1e3a5f;
+  background: #162a45;
   border: none;
   color: #fff;
   padding: 6px 12px;
@@ -347,13 +347,11 @@ h2 {
 
 /* View Modal styling */
 .view-modal {
-  max-width: 450px;
-  background: linear-gradient(160deg, #243f63, #1b2a3a);
-  border: 1px solid #2f4a6d;
-  border-radius: 14px;
-  padding: 25px 30px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.7);
-  color: #f5f7fa;
+  box-sizing: border-box;   /* keep padding inside width */
+  text-align: left;         /* important: left align content */
+  max-width: 480px;         /* ensure a comfortable line length */
+  width: 92%;
+  padding: 24px 28px;
 }
 
 .view-modal h3 {
@@ -366,8 +364,7 @@ h2 {
 
 .view-section {
   margin-bottom: 12px;
-  font-size: 15px;
-  line-height: 1.4;
+  word-break: normal;           /* normal for small labels */
 }
 
 #viewTaskDesc {
@@ -389,4 +386,17 @@ h2 {
 #viewTaskPriority.Low {
   color: #90ee90;
   font-weight: bold;
+}
+
+#viewTaskDesc {
+  margin-top: 8px;
+  white-space: pre-wrap;        /* preserve line breaks AND allow wrapping */
+  overflow-wrap: anywhere;      /* allow breaks inside very long words */
+  word-break: break-word;       /* fallback for some browsers */
+  hyphens: auto;                /* optional: insert hyphens when appropriate */
+  font-size: 14px;
+  color: #d0dae8;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 12px;
 }
