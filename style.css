@@ -401,11 +401,19 @@ h2 {
   margin-bottom: 12px;
 }
 
-/* Completed tasks */
+/* Completed tasks locked look */
 .task-card.completed {
   opacity: 0.6;
   text-decoration: line-through;
   background: linear-gradient(145deg, #283d55, #2f4a6d);
+  cursor: not-allowed;
+}
+
+/* Disabled edit button */
+.task-actions .edit-btn:disabled {
+  background: #555;
+  color: #aaa;
+  cursor: not-allowed;
 }
 
 /* Checkbox style */

@@ -121,13 +121,22 @@ function createTaskElement({ name, date, time, priority, desc }) {
   li.appendChild(actions);
 
   // ✅ Completion toggle
-  check.addEventListener('change', () => {
-    if (check.checked) {
-      li.classList.add('completed');
-    } else {
-      li.classList.remove('completed');
-    }
-  });
+check.addEventListener('change', () => {
+  if (check.checked) {
+    li.classList.add('completed');
+
+    // disable editing & viewing
+    li.querySelector('.edit-btn').disabled = true;
+    li.style.pointerEvents = "none"; // block clicks on card
+    actions.style.pointerEvents = "auto"; // re-enable action buttons only
+  } else {
+    li.classList.remove('completed');
+
+    // re-enable interactions
+    li.querySelector('.edit-btn').disabled = false;
+    li.style.pointerEvents = "auto";
+  }
+});
 
   // make whole card clickable (except actions & checkbox)
   li.addEventListener('click', (e) => {
